@@ -1,26 +1,20 @@
 version: 0.2
-
 phases:
   install:
     runtime-versions:
       nodejs: 20
     commands:
       - npm install -g @angular/cli@17
-
   pre_build:
     commands:
       - npm install
-
   build:
     commands:
-      - ng build --configuration=production
-      - mkdir package
-      - cp -r dist/my-angular-project package/
-      - cp -r deploy-scripts package/
-      - cp appspec.yml package/
-      - cd package && zip -r ../deploy-package.zip .
-      - echo "Build and packaging complete."
-
+      - ng build -c production
+    finally:
+      - echo 'This is the finally block execution!'
 artifacts:
   files:
-    - deploy-package.zip
+    - 'dist/test-angular-project/**/*'
+    - appspec.yml
+    - 'deploy-scripts/**/*'
