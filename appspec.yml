@@ -1,10 +1,10 @@
 version: 0.0
 os: linux
 files:
-  - source: dist/my-angular-project
-    destination: /var/www/my-angular-project
+  - source: dist/test-angular-project
+    destination: /var/www/test`-angular-project
 permissions:
-  - object: /var/www/my-angular-project
+  - object: /var/www/test-angular-project
     pattern: '**'
     mode: '0755'
     owner: root
